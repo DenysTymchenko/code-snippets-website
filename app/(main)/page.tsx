@@ -1,8 +1,14 @@
-import prisma from '@/db';
+import { Snippet } from '@prisma/client';
 
 export default async function Home() {
-  const snippets = await prisma.snippet.findMany();
+  const response = await fetch('http://localhost:3000/api/snippet/');
+  const snippets = await response.json();
+
   return (
-    <h1>{JSON.stringify(snippets)}</h1>
+    <div>
+      {snippets.map((snippet: Snippet) => (
+        <h1 key={snippet.id}>{snippet.title}</h1>
+      ))}
+    </div>
   );
 }

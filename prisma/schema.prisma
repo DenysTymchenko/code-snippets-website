@@ -312,6 +312,7 @@ enum Language {
   yaml
   yang
   zig
+  html
 }
 
 model Snippet {
