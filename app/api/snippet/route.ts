@@ -1,12 +1,7 @@
-import { auth } from '@clerk/nextjs/server';
 import { snippetGetSchema, snippetPostSchema } from './schema';
 import prisma from '@/db';
 
 export async function GET(req: Request) {
-  //if (!auth().userId) {
-  //  return new Response('User must be signed in before sending requests.', { status: 401 })
-  //}
-
   try {
     const filters = Object.fromEntries(new URL(req.url).searchParams)
 
@@ -20,10 +15,6 @@ export async function GET(req: Request) {
 }
 
 export async function POST(req: Request) {
-  if (!auth().userId) {
-    return new Response('User must be signed in before sending requests.', { status: 401 })
-  }
-
   try {
     const body = await req.json()
 

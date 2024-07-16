@@ -7,10 +7,6 @@ interface DataParams {
 }
 
 export async function PATCH(req: Request, data: DataParams) {
-  if (!auth().userId) {
-    return new Response('User must be signed in before sending requests.', { status: 401 })
-  }
-
   try {
     const id = +data.params.id
     const body = await req.json()
@@ -25,10 +21,6 @@ export async function PATCH(req: Request, data: DataParams) {
 }
 
 export async function DELETE(req: Request, data: DataParams) {
-  if (!auth().userId) {
-    return new Response('User must be signed in before sending requests.', { status: 401 })
-  }
-
   try {
     const id = +data.params.id
     const deletedSnippet = await prisma.snippet.delete({ where: { id } });
