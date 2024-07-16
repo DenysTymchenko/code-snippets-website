@@ -1,4 +1,3 @@
-import { auth } from '@clerk/nextjs/server';
 import { snippetPatchSchema } from './schema';
 import prisma from '@/db';
 
