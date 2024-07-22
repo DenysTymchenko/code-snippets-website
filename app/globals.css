@@ -4,7 +4,7 @@
 
 @layer base {
     body {
-        @apply bg-main-800 h-screen overflow-y-hidden;
+        @apply bg-main-800;
     }
 
     h1 {

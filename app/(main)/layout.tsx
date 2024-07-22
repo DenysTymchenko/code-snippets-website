@@ -1,6 +1,7 @@
 import { RedirectToSignIn, SignedOut } from '@clerk/nextjs';
 import Header from "../../components/header";
 import '../globals.css'
+import Nav from '@/components/nav';
 
 export default function MainLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
@@ -9,7 +10,11 @@ export default function MainLayout({ children }: Readonly<{ children: React.Reac
         <RedirectToSignIn />
       </SignedOut>
       <Header />
-      <main>{children}</main>
+
+      <main className='flex'>
+        <Nav />
+        {children}
+      </main>
     </>
   );
 }
